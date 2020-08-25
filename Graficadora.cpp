@@ -59,16 +59,6 @@ void graficarRegion(double a, double b, double (*f)(double)) {
     cairo_set_source(cr, pat);
     cairo_fill(cr);
 
-
-    //point
-    //    cairo_set_source_rgb(cr, 0.69, 0.19, 0);
-    //    cairo_arc(cr, 100, 10, 2.1, 0, 2*M_PI);
-    //    cairo_fill_preserve(cr);
-    //    cairo_set_source_rgba(cr, 0.9, 0.0, 0.0, 0.3);
-    //    cairo_fill(cr);
-
-    // calculo de limites del espacio para la grafica
-
     //GRID 
     double origenx = width / ratio;
     double origeny = height / ratio;
@@ -137,6 +127,8 @@ void graficarRegion(double a, double b, double (*f)(double)) {
 
     cairo_set_source_rgba(cr, 1, 0.2, 0.2, 0.6);
     cairo_set_line_width(cr, 3.0);
+    
+    //EJES
 
     //graficar ejes de ser necesario
     if (a <= 0 && b >= 0) {
@@ -159,11 +151,7 @@ void graficarRegion(double a, double b, double (*f)(double)) {
     cairo_stroke(cr);
 
 
-    // graficar puntos
-
-
-
-
+    // PLOT POINTS
     double prevxValue = a + (b - a) / n * 0;
     double prevyValue = f(prevxValue);
 
@@ -173,9 +161,9 @@ void graficarRegion(double a, double b, double (*f)(double)) {
     for (int i = 0; i < n; i++) {
         double valx = a + (b - a) / n*i;
         double valy = f(valx);
-
         double pendiente = (valy - prevyValue) / (valx - prevxValue);
-
+        
+        // evaluar si es necesario plotear mas puntos por cambios muy bruscos en la pendiente
         if (valx != prevxValue && abs(pendiente) > (b-a)) {
             for (double j = i - 1; j < i; j = (j + 1/100.00)) {
                 double valx_j = a + (b - a) / n*j;
@@ -198,40 +186,12 @@ void graficarRegion(double a, double b, double (*f)(double)) {
         cairo_arc(cr, valx, valy, 0.3, 0, 1 * M_PI);
         cairo_fill(cr);
 
-        //hola 2
     }
 
     cairo_surface_write_to_png(surface, "Grafica.png");
 
 }
 
-//void createGrid(double width, double height){
-//    cairo_surface_t *surface;
-//    cairo_pattern_t *pat;
-//    cairo_t *cr;
-//    
-//    surface = cairo_image_surface_create(CAIRO_FORMAT_ARGB32, height, width);
-//    cr = cairo_create(surface);
-//    
-//    pat = cairo_pattern_create_linear(width/2, 0.0, width/2, height );
-//    cairo_pattern_add_color_stop_rgb(pat, 0.0, 0.9, 0.9, 0.9);
-//    cairo_pattern_add_color_stop_rgb(pat, 1.0, 0.6, 0.6, 0.6);
-//    cairo_rectangle(cr, 0,0, width, height);
-//    cairo_set_source(cr,pat);
-//    cairo_fill(cr);
-//    
-//    
-//    
-//    cairo_set_source_rgb(cr, 0.69, 0.19, 0);
-//    cairo_arc(cr, 100, 10, 2.1, 0, 2*M_PI);
-//    cairo_fill_preserve(cr);
-//    cairo_set_source_rgba(cr, 0.9, 0.0, 0.0, 0.3);
-//    cairo_fill(cr);
-//    
-//    cairo_surface_write_to_png(surface, "Grafica.png");
-//   
-//    
-//}
 
 
 
