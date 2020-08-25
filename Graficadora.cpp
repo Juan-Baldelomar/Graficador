@@ -172,7 +172,7 @@ void graficarRegion(double a, double b, double (*f)(double)) {
         cairo_arc(cr, valx, valy, 0.3,0,1*M_PI);
         cairo_fill(cr);
         
-        //hola
+        //hola 2
     }
     
      cairo_surface_write_to_png(surface, "Grafica.png");
