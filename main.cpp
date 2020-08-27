@@ -30,9 +30,16 @@ double cuadratica(double x){
 } 
 
 double seno(double x){
+    return sin(x);
+}
+
+double seno2(double x){
     return x*x*sin(1/x);
 }
 
+double seno3(double x){
+    return sin(1/x);
+}
 //
 //int main() {
 //    
@@ -54,7 +61,7 @@ main (int argc, char *argv[])
     //graficarRegion(-10,10, [](double x){return x*x;});
     
     // mandando una funcion definida
-    graficarRegion(-0.01,0.01, seno);
+    graficarRegion(-100,100, seno3);
         return 0;
 }
 

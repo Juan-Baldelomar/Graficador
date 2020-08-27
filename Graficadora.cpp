@@ -20,7 +20,7 @@ double calcularPixelYPos(double y) {
 }
 
 void graficarRegion(double a, double b, double (*f)(double)) {
-    int n = 100000;
+    int n = 100000 + (b-a)*10000;
     int ratio = 10;
     int gridRatio = 40;
 
@@ -164,8 +164,8 @@ void graficarRegion(double a, double b, double (*f)(double)) {
         double pendiente = (valy - prevyValue) / (valx - prevxValue);
         
         // evaluar si es necesario plotear mas puntos por cambios muy bruscos en la pendiente
-        if (valx != prevxValue && abs(pendiente) > (b-a)) {
-            for (double j = i - 1; j < i; j = (j + 1/100.00)) {
+        if (valx != prevxValue && fabs(pendiente) > (b-a)) {
+            for (double j = i - 1; j < i; j = (j + 1.00/100.00)) {
                 double valx_j = a + (b - a) / n*j;
                 double valy_j = endy - (f(valx_j) - fMin) / (fMax - fMin)*(endy - origeny);
                 valx_j = (valx_j - a) / (b - a)*(endx - origenx) + origenx;
