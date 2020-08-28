@@ -13,6 +13,12 @@
 
 #ifndef BISECCION_H
 #define BISECCION_H
+#define MIN std::numeric_limits<double>::min()
+
+
+#include <limits>
+
+
 
 
 double metodoBiseccion(double x1, double x2, double epsilon, double(*f)(double)) ;

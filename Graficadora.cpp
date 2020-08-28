@@ -26,8 +26,8 @@ void graficarRegion(double a, double b, double (*f)(double)) {
 
 
     double x, y;
-    double fMax = std::numeric_limits<double>::min();
-    double fMin = std::numeric_limits<double>::max();
+    double fMax = MIN;
+    double fMin = MAX;
 
     //get max and min
     for (int i = 0; i < n; i++) {

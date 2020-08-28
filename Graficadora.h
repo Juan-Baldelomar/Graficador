@@ -13,13 +13,16 @@
 
 #ifndef GRAFICADORA_H
 #define GRAFICADORA_H
-
+#define MIN std::numeric_limits<double>::min()
+#define MAX std::numeric_limits<double>::max()
 
 #include <limits>
 #include <iostream>
 #include "stdio.h"
 #include <cairo.h>
 #include <math.h>
+
+
 
 //void createGrid(double width, double height);
 void graficarRegion(double a, double b, double (*f)(double));
