@@ -17,6 +17,7 @@
 #include <iostream>
 #include "Biseccion.h"
 #include "Graficadora.h"
+#include "NewtonR.h"
 #include "math.h"
 
 using namespace std;
@@ -27,6 +28,10 @@ using namespace std;
 
 double cuadratica(double x){
     return pow(x,2)-1;
+} 
+
+double cuadraticaDx(double x){
+    return 2*x;
 } 
 
 double seno(double x){
@@ -40,28 +45,33 @@ double seno2(double x){
 double seno3(double x){
     return sin(1/x);
 }
-//
-//int main() {
-//    
-//    double raiz = metodoBiseccion(-5,5,0.00000001, cuadratica);
-//    printf("%f", raiz);
-//    
-//    return 0;
-//    
-//}
 
-
-
-
-
-int
-main (int argc, char *argv[])
+void
+IniciarGraficador ()
 {
     //// mandando una funcion lambda
     //graficarRegion(-10,10, [](double x){return x*x;});
     
     // mandando una funcion definida
-    graficarRegion(-100,100, seno3);
-        return 0;
+    graficarRegion(-0.1, 0.1, seno2);
+        
 }
+
+int main() {
+    
+    double raiz = metodoBiseccion(-5,0,0.00000001, cuadratica);
+    //double raiz = metodoNewton(-0.5, cuadratica, cuadraticaDx, 0.000001);
+    printf("%f", raiz);
+    
+    IniciarGraficador();
+    
+    return 0;
+    
+}
+
+
+
+
+
+
 

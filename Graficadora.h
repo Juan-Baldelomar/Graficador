@@ -26,6 +26,6 @@
 
 //void createGrid(double width, double height);
 void graficarRegion(double a, double b, double (*f)(double));
-
+void graficarRegion_L(double a, double b, double (*f)(double));
 #endif /* GRAFICADORA_H */
 
