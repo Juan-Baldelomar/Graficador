@@ -17,7 +17,6 @@
 #include <iostream>
 #include "Biseccion.h"
 #include "Graficadora.h"
-#include "NewtonR.h"
 #include "math.h"
 
 using namespace std;
@@ -59,8 +58,8 @@ IniciarGraficador ()
 
 int main() {
     
-    double raiz = metodoBiseccion(-5,0,0.00000001, cuadratica);
-    //double raiz = metodoNewton(-0.5, cuadratica, cuadraticaDx, 0.000001);
+    //double raiz = metodoBiseccion(-5,0,0.00000001, cuadratica);
+    double raiz = metodoNewton(-0.5, cuadratica, cuadraticaDx, 0.000001);
     printf("%f", raiz);
     
     IniciarGraficador();

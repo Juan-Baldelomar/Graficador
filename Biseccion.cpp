@@ -4,9 +4,7 @@
  * and open the template in the editor.
  */
 
-#include "stdio.h"
-#include <iostream>
-#include "math.h"
+
 
 #include "Biseccion.h"
 
@@ -49,5 +47,19 @@ double metodoBiseccion(double x1, double x2, double epsilon, double(*f)(double))
     }while (fabs(xMed - x1) > epsilon) ;
     
     return xMed;
+}
+
+
+double metodoNewton(double x0, double (*f)(double), double (*f_dx)(double), double epsilon){
+    double x_k = x0;
+    double x_k1 = x0;
+    
+    do{
+        x_k = x_k1;
+        x_k1 = x_k - f(x_k)/f_dx(x_k);
+        
+    }while(fabs(x_k - x_k1)>epsilon);
+    
+    return x_k1;
 }
 
