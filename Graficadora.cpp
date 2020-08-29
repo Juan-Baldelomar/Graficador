@@ -32,11 +32,12 @@ void graficarRegion(double a, double b, double (*f)(double)) {
     //get max and min
     for (int i = 0; i < n; i++) {
         x = a + i * (b - a) / n;
-        if (fMax < f(x))
-            fMax = f(x);
+        y = f(x);
+        if (fMax < y && y != INFINITY)
+            fMax = y;
 
-        if (fMin > f(x))
-            fMin = f(x);
+        if (fMin >  y &&  y != -INFINITY)
+            fMin = y;
     }
 
     cout << "max is " << fMax << endl;
@@ -210,13 +211,14 @@ void graficarRegion_L(double a, double b, double (*f)(double)) {
     //get max and min
     for (int i = 0; i < n; i++) {
         x = a + i * (b - a) / n;
-        if (fMax < f(x))
-            fMax = f(x);
+        y = f(x);
+        if (fMax < y && y != INFINITY)
+            fMax = y;
 
-        if (fMin > f(x))
-            fMin = f(x);
+        if (fMin > y && y !=-INFINITY)
+            fMin = y;
     }
-
+    
     cout << "max is " << fMax << endl;
 
     cout << "min is " << fMin << endl;
@@ -353,6 +355,9 @@ void graficarRegion_L(double a, double b, double (*f)(double)) {
     for (int i = 1; i < n; i++) {
         valx = a + (b - a) / n*i;
         valy = f(valx);
+        
+        
+        
         double pendiente = (valy - prevyValue) / (valx - prevxValue);
         
         // evaluar si es necesario plotear mas puntos por cambios muy bruscos en la pendiente
@@ -366,6 +371,10 @@ void graficarRegion_L(double a, double b, double (*f)(double)) {
                 cairo_stroke(cr);
                 cairo_move_to(cr, valx, valy);
             }
+        }
+        
+        if (valy == -(INFINITY)){
+            printf("YEEII");
         }
     
         // recalcular posicion de valx y valy en caso de haber entrado al if anterior

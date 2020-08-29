@@ -45,24 +45,67 @@ double seno3(double x){
     return sin(1/x);
 }
 
+
+//funciones requeridas
+double f1(double x){
+    return x*x;
+}
+
+double f2(double x){
+    return x*x*x -2*(x*x) +8*x-1;
+}
+
+double f3(double x){
+    return sin(x);
+}
+
+double f4(double x){
+    return log(x);
+}
+
+// DERIVADAS
+double f1_dx(double x){
+    return 2*x;
+}
+
+double f2_dx(double x){
+    return 3*x*x -4*x + 8;
+}
+
+double f3_dx(double x){
+    return cos(x);
+}
+
+double f4_dx(double x){
+    return 1/x;
+}
+
+
 void
 IniciarGraficador ()
 {
-    //// mandando una funcion lambda
+    //PRUEBAS 
+    //// mandando una funcion lambda (anonima)
     //graficarRegion(-10,10, [](double x){return x*x;});
     
-    // mandando una funcion definida
-    graficarRegion(-0.1, 0.1, seno2);
+    //PRUEBA F4 ln(x)
+    graficarRegion_L(0,2,f4);
+    graficarRegion(0,2,f4);
+    
+    
+    // prueba Extra
+    //graficarRegion_L(-0.1, 0.1, seno3);
+    //graficarRegion(-0.1, 0.1, seno3);
         
 }
 
 int main() {
     
-    //double raiz = metodoBiseccion(-5,0,0.00000001, cuadratica);
-    double raiz = metodoNewton(-0.5, cuadratica, cuadraticaDx, 0.000001);
-    printf("%f", raiz);
+    double raiz = metodoBiseccion(0.5, 2, 0.00000001, f4);
+    //double raiz = metodoNewton(0.5, f4, f4_dx, 0.00000001);
+    printf("%.10f", raiz);
     
-    IniciarGraficador();
+    //IniciarGraficador();
     
     return 0;
     
