@@ -24,7 +24,7 @@
 
 
 
-double metodoNewton(double x0, double (*f)(double), double (*f_dx)(double), double epsilon);
+double metodoNewton(double x0, double (*f)(double), double (*f_dx)(double), double epsilon, int max_it);
 double metodoBiseccion(double x1, double x2, double epsilon, double(*f)(double)) ;
 
 

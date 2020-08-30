@@ -101,9 +101,10 @@ IniciarGraficador ()
 
 int main() {
     
-    double raiz = metodoBiseccion(0.5, 2, 0.00000001, f4);
-    //double raiz = metodoNewton(0.5, f4, f4_dx, 0.00000001);
-    printf("%.10f", raiz);
+    //double raiz = metodoBiseccion(0.5, 2, 0.00000001, f4);
+    double raiz = metodoNewton(2, f4, f4_dx, 0.00000001, 1000);
+    printf("raiz en %.10f\n", raiz);
+    printf("valor en la raiz: f(%.10f) = %.10f\n", raiz, f4(raiz));
     
     //IniciarGraficador();
     
